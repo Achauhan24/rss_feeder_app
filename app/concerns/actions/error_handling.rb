@@ -2,16 +2,20 @@
 
 module Actions
   module ErrorHandling
-    def success?
-      errors.blank?
-    end
-
     def error_code
       @error_code ||= 400
     end
 
+    def error_code=(status_code)
+      @error_code = status_code
+    end
+
     def errors
       @errors ||= {}
+    end
+
+    def success?
+      errors.blank?
     end
 
     def error_messages
@@ -43,10 +47,18 @@ module Actions
 
     private
 
+    def not_found_error(klass_name, type, id)
+      fail_with_error(422, type, "#{klass_name} could not be found with id=#{id}")
+    end
+
+    def flatten_errors(errors_obj)
+      errors_obj.flatten.compact
+    end
+
     def fail_with_error(error_code, key, reason)
       self.error_code = error_code
       append_error(key, reason)
-      nil
+      nil # return nil explictly
     end
 
     def append_error(key, value)
@@ -55,12 +67,7 @@ module Actions
         errors[key].merge!(value)
       else
         errors[key] = value
-
       end
-    end
-
-    def error_code=(code)
-      @error_code = code
     end
   end
 end

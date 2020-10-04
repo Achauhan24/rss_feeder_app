@@ -22,5 +22,12 @@ module Api
       end
       render_action_error @action
     end
+
+    def destroy
+      perform AgencyCategory::DestroyAction do
+        return render json: @action.data
+      end
+      render_action_error @action
+    end
   end
 end

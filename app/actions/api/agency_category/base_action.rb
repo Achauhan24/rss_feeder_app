@@ -14,10 +14,6 @@ module Api
       params.require(:agency_category).permit(:category_id, :agency_id, :url)
     end
 
-    def scope
-      @scope ||= current_user.agency_categories.where(agency_id: params[:agency_id])
-    end
-
     def record
       @record ||= self.class.record_class.find(params[:id])
     rescue ActiveRecord::RecordNotFound

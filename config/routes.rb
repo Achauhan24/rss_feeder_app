@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     post '/sign_in', to: 'sessions#create'
     delete '/sign_out', to: 'sessions#destroy'
 
-    resources :categories, :agencies, :agency_categories, :feeds
+    resources :categories, :agencies, :agency_categories
+    resources :feeds do
+      get 'list_all', on: :collection
+    end
+    resources :users, only: [:create]
   end
 end

@@ -2,6 +2,8 @@
 
 module Api
   class CategoriesController < Api::ApplicationController
+    skip_before_action :authenticate!, only: :index
+
     def create
       perform Category::CreateAction do
         return render json: @action.data

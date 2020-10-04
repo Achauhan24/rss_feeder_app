@@ -13,6 +13,7 @@ gem 'puma', '~> 4.1'
 gem 'rack-cors'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 gem 'uncouple', '>=0.2.2', require: 'uncouple/rails'
+gem 'whenever'
 
 group :development, :test do
   gem 'pry'

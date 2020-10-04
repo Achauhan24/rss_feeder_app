@@ -11,7 +11,8 @@ module Api
     end
 
     def scope
-      @scope ||= record.feeds
+      @scope ||= current_user.agency_categories
+                             .find_by(id: params[:agency_category_id])
     end
 
     def record

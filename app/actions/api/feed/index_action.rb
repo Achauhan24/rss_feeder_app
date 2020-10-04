@@ -8,11 +8,11 @@ module Api
     end
 
     def records
-      @records ||= self.class.record_class.all.order(published_date: :desc)
+      @records ||= scope&.feeds&.order(published_date: :desc)
     end
 
     def data
-      self.class.serializer.new(paginated_records, options)
+      self.class.serializer.new(records)
     end
   end
 end

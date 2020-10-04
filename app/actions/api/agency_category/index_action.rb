@@ -7,7 +7,7 @@ module Api
     end
 
     def records
-      @records ||= scope.includes(:category, :agency)
+      @records ||= current_user.agency_categories.includes(:category, :agency)
     end
 
     def data

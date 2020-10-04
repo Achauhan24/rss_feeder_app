@@ -2,6 +2,6 @@
 
 module Api
   class FeedSerializer < Api::BaseSerializer
-    attributes :id, :title, :description, :link, :published_date
+    attributes :id, :click_count, :title, :description, :link, :published_date
   end
 end

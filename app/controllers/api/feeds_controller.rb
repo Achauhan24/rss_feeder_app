@@ -2,6 +2,8 @@
 
 module Api
   class FeedsController < Api::ApplicationController
+    skip_before_action :authenticate!, only: :list_all
+
     def create
       perform Feed::CreateAction do
         return render json: @action.data
@@ -18,6 +20,20 @@ module Api
 
     def show
       perform Feed::ShowAction do
+        return render json: @action.data
+      end
+      render_action_error @action
+    end
+
+    def update
+      perform Feed::UpdateAction do
+        return render json: @action.data
+      end
+      render_action_error @action
+    end
+
+    def list_all
+      perform Feed::ListAllAction do
         return render json: @action.data
       end
       render_action_error @action

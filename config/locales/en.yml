@@ -35,3 +35,6 @@ en:
     unauthorized: "Please signin before continuing"
     bad_request: "Invalid access token"
     expired: 'Session Expired'
+  session:
+    invalid_email: 'Invalid Email Address'
+    invalid_password: 'Invalid Password'
