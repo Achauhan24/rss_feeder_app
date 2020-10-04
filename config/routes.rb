@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
     resources :categories, :agencies, :agency_categories
     resources :feeds do
-      get 'list_all', on: :collection
+      collection do
+        get :list_all
+        get :click_report
+        get :generate_click_report
+      end
     end
     resources :users, only: [:create]
   end

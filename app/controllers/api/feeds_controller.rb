@@ -38,5 +38,19 @@ module Api
       end
       render_action_error @action
     end
+
+    def click_report
+      perform Feed::ClickReportAction do
+        return render json: @action.data
+      end
+      render_action_error @action
+    end
+
+    def generate_click_report
+      perform Feed::GenerateClickReportAction do
+        return render json: @action.data
+      end
+      render_action_error @action
+    end
   end
 end
