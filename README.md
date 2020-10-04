@@ -3,22 +3,26 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+* Ruby Version - 2.6.3
 
-* Ruby version
+* Rails version - 6.0.3
 
-* System dependencies
+* One has to setup the database using db:setup
 
-* Configuration
+* One will need master.key to use credentials
 
-* Database creation
+* Some seed data is already created.
 
-* Database initialization
+    Use email: 'testuser@gmail.com', password: 'password' to login
 
-* How to run the test suite
+    To add more rss-feed urls please check the rss-websites of different agencies.
 
-* Services (job queues, cache servers, search engines, etc.)
+ * Thing to highlight
 
-* Deployment instructions
+  I have used uncouple gem. You can find it here https://github.com/citrus/uncouple
 
-* ...
+  For pdf generation i have used prawn gem.
+
+  A basic preview of the pdf can be found in  /public folder.
+
+  To update the rss-feeds i have whenver gem that schedules a cronjob for every 5 minutes.
