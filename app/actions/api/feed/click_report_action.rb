@@ -8,7 +8,7 @@ module Api
 
     def records
       @records ||= current_user.feeds
-                               .joins(agency_category: :agency)
+                               .includes(agency_category: :agency)
                                .where('DATE(published_date) = ? ', params[:date])
                                .order(click_count: :desc)
     end
